@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
-import TutorialDataService from "../../services/tutorial";
+import Getvideos from "../../services/getvideo";
 import styles from "./styles.module.scss";
 import logo from '../../logo.svg'; 
 
 type Props = {};
 
-const TutorialsList: React.FC<Props> = () => {
+const Main: React.FC<Props> = () => {
   const [tutorials, setTutorials] = useState([]);
   const [searchText, setSearchText] = useState("");
   const searchTitle = useDebounce(searchText, 500);
@@ -17,7 +17,7 @@ const TutorialsList: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    TutorialDataService.findByTitle(searchTitle)
+    Getvideos.findByTitle(searchTitle)
       .then((response: any) => {
         if(response.data.Response == "True"){
           setTutorials(response.data.Search);
@@ -74,4 +74,4 @@ const TutorialsList: React.FC<Props> = () => {
   );
 };
 
-export default TutorialsList;
+export default Main;
