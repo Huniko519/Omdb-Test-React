@@ -53,17 +53,17 @@ const TutorialsList: React.FC<Props> = () => {
         {tutorials.length ? (
           <div className="row">
             {tutorials?.map((content, idx) => (
-              <div key={idx} className="col-md-3 mt-2">
-                <div className="card border-success shadow">
-                  <div className="card-header bg-transparent border-success">{content['Title']}</div>
-                  <div className={classNames("card-body text-success", styles.imgcard)}>
-                    <img
-                      src={content['Poster'] == 'N/A' ? logo : content['Poster'] }
-                      height="150px"
-                      className={classNames("card-img", styles.imgvideo)}
-                    />
+              <div key={idx} className="col-md-4 mt-2">
+                <div className="card">
+                  <div className={classNames(styles.cardhorizontal)}>
+                      <div className={classNames(styles.imgwrapper)}>
+                          <img src={content['Poster'] == 'N/A' ? logo : content['Poster'] } className={classNames("card-img", styles.imgvideo)} />
+                      </div>
+                      <div className={classNames("card-body", styles.girdbody)}>
+                          <h6 className="card-title">{content['Title']}</h6>
+                          <p className="card-text">{content['Year']}</p>
+                      </div>
                   </div>
-                  <div className="card-footer bg-transparent border-success">{content['Year']}</div>
                 </div>
               </div>
             ))}

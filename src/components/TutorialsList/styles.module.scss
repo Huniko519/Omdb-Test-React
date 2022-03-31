@@ -1,9 +1,24 @@
 .imgvideo{
     object-fit: cover;
+    width: 140px;
+    height: 140px;
 }      
 
 .imgcard{
     display: contents;
     position: relative;
     height: auto;
+}
+
+.cardhorizontal{
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.imgwrapper{
+    width: 140px;
+}
+
+.girdbody{
+    display: grid;
 }
