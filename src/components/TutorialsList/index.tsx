@@ -33,8 +33,13 @@ const TutorialsList: React.FC<Props> = () => {
 
   return (
     <div className="row">
-      <div className="col-md-12 mt-3">
-        <div className="input-group mb-3">
+      <div className="col-md-12 mt-2">
+        <div className="input-group mb-2 text-center">
+          <a target="_blank" href="https://github.com/Astro2020-lovely/omdb-test-react">Source Code</a>
+        </div>
+      </div>
+      <div className="col-md-12 mt-2">
+        <div className="input-group mb-2">
           <input
             type="text"
             className="form-control"
@@ -48,7 +53,7 @@ const TutorialsList: React.FC<Props> = () => {
         {tutorials.length ? (
           <div className="row">
             {tutorials?.map((content, idx) => (
-              <div key={idx} className="col-md-3 mt-3">
+              <div key={idx} className="col-md-3 mt-2">
                 <div className="card border-success shadow">
                   <div className="card-header bg-transparent border-success">{content['Title']}</div>
                   <div className={classNames("card-body text-success", styles.imgcard)}>
