@@ -8,7 +8,7 @@ import logo from '../../logo.svg';
 type Props = {};
 
 const Main: React.FC<Props> = () => {
-  const [tutorials, setTutorials] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [searchText, setSearchText] = useState("");
   const searchTitle = useDebounce(searchText, 500);
 
@@ -20,10 +20,10 @@ const Main: React.FC<Props> = () => {
     Getvideos.findByTitle(searchTitle)
       .then((response: any) => {
         if(response.data.Response == "True"){
-          setTutorials(response.data.Search);
+          setVideos(response.data.Search);
           console.log(response.data.Search);
         }else{
-          setTutorials([]);
+          setVideos([]);
         }
       })
       .catch((e: Error) => {
@@ -50,9 +50,9 @@ const Main: React.FC<Props> = () => {
         </div>
       </div>
       <div className="col-md-12 p-3">
-        {tutorials.length ? (
+        {videos.length ? (
           <div className="row">
-            {tutorials?.map((content, idx) => (
+            {videos?.map((content, idx) => (
               <div key={idx} className="col-md-4 mt-2">
                 <div className="card">
                   <div className={classNames(styles.cardhorizontal)}>
