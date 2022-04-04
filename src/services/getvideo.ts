@@ -1,8 +1,11 @@
 import http from "../http-common";
-class Getvideos {
-  findByTitle(title: string) {
-    return http.get(`/?apikey=1e6b6cf2&s=${title}`);
-  }
-}
 
-export default new Getvideos();
+type State = {
+  Title: string,
+  Year: string,
+  Poster?: boolean,
+};
+
+export function findByTitle(title: string) {
+  return http.get<Array<State>>(`/?apikey=1e6b6cf2&s=${title}`);
+}

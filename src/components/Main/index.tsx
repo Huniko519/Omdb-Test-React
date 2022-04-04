@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
-import Getvideos from "../../services/getvideo";
+import { findByTitle } from "../../services/getvideo";
 import styles from "./styles.module.scss";
 import logo from '../../logo.svg'; 
 
@@ -17,11 +18,10 @@ const Main: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    Getvideos.findByTitle(searchTitle)
+   findByTitle(searchTitle)
       .then((response: any) => {
-        if(response.data.Response == "True"){
+        if(response.data.Response === "True"){
           setVideos(response.data.Search);
-          console.log(response.data.Search);
         }else{
           setVideos([]);
         }
@@ -35,7 +35,7 @@ const Main: React.FC<Props> = () => {
     <div className="row">
       <div className="col-md-12 mt-2">
         <div className="input-group mb-2 text-center">
-          <a target="_blank" href="https://github.com/Astro2020-lovely/omdb-test-react">Source Code</a>
+          <a target="_blank" href="https://github.com/Astro2020-lovely/omdb-test-react" rel="noreferrer">Source Code</a>
         </div>
       </div>
       <div className="col-md-12 mt-2">
@@ -57,7 +57,7 @@ const Main: React.FC<Props> = () => {
                 <div className="card">
                   <div className={classNames(styles.cardhorizontal)}>
                       <div className={classNames(styles.imgwrapper)}>
-                          <img src={content['Poster'] == 'N/A' ? logo : content['Poster'] } className={classNames("card-img", styles.imgvideo)} />
+                          <img src={content['Poster'] === 'N/A' ? logo : content['Poster'] } className={classNames("card-img", styles.imgvideo)} />
                       </div>
                       <div className={classNames("card-body", styles.girdbody)}>
                           <h6 className="card-title">{content['Title']}</h6>
